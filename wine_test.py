@@ -25,7 +25,7 @@ trainX_scaled = scalerv.transform(trainX)
 testX_scaled = scalerv.transform(testX)
 
 # create our model cross validation pipeline
-pipeline = make_pipeline(preprocessing.StandardScaler(), 
+pipeline = make_pipeline(preprocessing.MinMaxScaler(), 
                          RandomForestRegressor(n_estimators=100))
 
 # create the hyperparameters to test for 
