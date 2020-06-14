@@ -25,7 +25,7 @@ trainX_scaled = scalerv.transform(trainX)
 testX_scaled = scalerv.transform(testX)
 
 # create our model cross validation pipeline
-pipeline = make_pipeline(preprocessing.MinMaxScaler(), 
+pipeline = make_pipeline(preprocessing.StandardScaler(), 
                          RandomForestRegressor(n_estimators=100))
 
 # create the hyperparameters to test for 
@@ -35,7 +35,7 @@ hyperparams = {
         }
 
 
-clf = GridSearchCV(pipeline, hyperparams, cv=10)
+clf = GridSearchCV(pipeline, hyperparams, cv=5)
 clf.fit(trainX, trainY)
 
 # print out the best hyperparameters from the CV test
